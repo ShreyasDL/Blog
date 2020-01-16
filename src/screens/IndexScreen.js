@@ -1,5 +1,5 @@
 import React,{ useContext} from 'react'
-import { Text, View, StyleSheet, Button, FlatList, TouchableOpacity} from 'react-native'
+import { Text, View, StyleSheet, Button, FlatList, TouchableOpacity } from 'react-native'
 import { Context } from '../context/BlogContext'
 import { AntDesign } from '@expo/vector-icons'
 
@@ -16,10 +16,10 @@ const IndexScreen = () =>{
           keyExtractor = { (blogPost) => blogPost.title}
           renderItem = { ({ item }) => {
             return (<View style = { styles.row }>
-                        <Text style = { styles.text } >{item.title}</Text>
-                        <TouchableOpacity onPress = { deleteBlogPost(item.id) } >
-                          <AntDesign name = 'delete' style = { styles.icon } />
-                        </TouchableOpacity>
+                      <Text style = { styles.text }>{item.title} - {item.id}</Text>
+                                <TouchableOpacity onPress = { () => deleteBlogPost(item.id) }>
+                                    <AntDesign name = 'delete' style = { styles.icon } />
+                                </TouchableOpacity>
                   </View>)
           }}
       />
