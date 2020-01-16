@@ -1,10 +1,10 @@
 import React,{ useContext} from 'react'
-import { Text, View, StyleSheet, Button, FlatList} from 'react-native'
+import { Text, View, StyleSheet, Button, FlatList, TouchableOpacity} from 'react-native'
 import { Context } from '../context/BlogContext'
 import { AntDesign } from '@expo/vector-icons'
 
 const IndexScreen = () =>{
-  const { state , addBlogPost} = useContext(Context)
+  const { state , addBlogPost , deleteBlogPost} = useContext(Context)
   return (
     <View>
       <Button
@@ -17,7 +17,9 @@ const IndexScreen = () =>{
           renderItem = { ({ item }) => {
             return (<View style = { styles.row }>
                         <Text style = { styles.text } >{item.title}</Text>
-                        <AntDesign name = 'delete' style = { styles.icon } />
+                        <TouchableOpacity onPress = { deleteBlogPost(item.id) } >
+                          <AntDesign name = 'delete' style = { styles.icon } />
+                        </TouchableOpacity>
                   </View>)
           }}
       />
