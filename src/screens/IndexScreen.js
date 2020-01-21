@@ -8,6 +8,16 @@ const IndexScreen = ({ navigation }) =>{
 
   useEffect( () => {
       getBlogPosts()
+
+      const listener = navigation.addListener('didFocus', () => {
+        getBlogPosts()
+      })
+
+      return () =>{
+        listener.remove()
+      }
+
+
   },[]) // [] specifies that we need to call our arrow function only one time i.e, when the first the screen rendered
 
 
